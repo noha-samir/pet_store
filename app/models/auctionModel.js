@@ -112,4 +112,58 @@ Auction.prototype.listBidsOfOwner = function (gConnection, owner, finalCallback)
         });
 };
 
+//calculate bid amount using GSP auction
+Auction.prototype.calculateBidAmountUsingGSP = function (gConnection, pet, finalCallback) {
+    let listOfBids = [];
+    async.waterfall([
+        function (callback) {
+            var preparedSqlQuery = `select user.id as bidderID , user.name as bidderName , amount 
+            from auction 
+            inner join user on auction.bidder_id = user.id 
+            where pet_id = ${pet.id} 
+            order by amount desc , name`;
+            gConnection.query(preparedSqlQuery, function (err, results, fields) {
+                if (!err && results) {
+                    if (results.length > 1) {
+                        for (let index = 0; index < results.length; index++) {
+                            const currentElement = results[index];
+                            var bidElement = {
+                                "bidder": {
+                                    "id": currentElement.bidderID,
+                                    "name": currentElement.bidderName
+                                },
+                                "amount": null
+                            };
+                            if (index == results.length - 1) {
+                                bidElement.amount = "LOST";
+                            } else {
+                                const nextElement = results[index + 1];
+                                bidElement.amount = nextElement.amount;
+                            }
+                            listOfBids.push(bidElement);
+                        }
+                        callback(null);
+                    }
+                    else if (results.length == 1) {
+                        let ERR = new Error();
+                        ERR.message = "Just one bid!!!,with name: " + results[0].bidderName + " and amount: " + results[0].amount;
+                        callback(ERR);
+                    }
+                    else {
+                        let ERR = new Error();
+                        ERR.message = "No Winners!!!";
+                        callback(ERR);
+                    }
+                }
+                else {
+                    callback(err);
+                }
+            });
+        }
+    ],
+        function (err) {
+            finalCallback(err, listOfBids);
+        });
+};
+
 module.exports = Auction;

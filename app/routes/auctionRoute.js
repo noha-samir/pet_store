@@ -8,4 +8,7 @@ router.post('/', auctionValidation.insertAuctionValidation, auctionController.co
 //list all bids of owner
 router.get('/owner/:ownerID', auctionValidation.listBidsValidation, auctionController.controllerListBids);
 
+//list all bids of pet auction
+router.get('/calculate/bids/using/GSP/pet/:petID', auctionValidation.calculateBidAmountUsingGSPValidation, auctionController.calculateBidAmountUsingGSP);
+
 module.exports = router;

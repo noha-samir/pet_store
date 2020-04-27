@@ -66,3 +66,33 @@ module.exports.listBidsValidation = function (req, res, next) {
         }
     });
 }
+
+//*******************************************************************//
+
+
+//JOI validation to the input object
+const calculateBidAmountUsingGSPSchema = Joi.object().keys({
+    petID: Joi.number().positive().error(new Error("pet ID must be a positive number!!!"))
+});
+
+module.exports.calculateBidAmountUsingGSPValidation = function (req, res, next) {
+    async.waterfall([
+        function (callback) {
+            Joi.validate(req.params, calculateBidAmountUsingGSPSchema, { stripUnknown: false }, { abortEarly: true }, function (err) {
+                if (!err) {
+                    callback(null);
+                }
+                else {
+                    callback(err);
+                }
+            });
+        }
+    ], function (err) {
+        if (!err) {
+            next();
+        }
+        else {
+            next(err);
+        }
+    });
+}

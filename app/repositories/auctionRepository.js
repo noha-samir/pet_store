@@ -55,3 +55,22 @@ module.exports.listBidsOfOwnerRepo = function (connection, ownerID, finalCallbac
         finalCallback(err, listOfBidders);
     });
 }
+
+module.exports.calculateBidAmountUsingGSP = function (connection, petID, finalCallback) {
+    async.waterfall([
+        function (callback) {
+            let aPetModel = new petModel();
+            aPetModel.getPetByID(connection, petID, function (err, returnedPet) {
+                callback(err, returnedPet);
+            });
+        },
+        function (returnedPet, callback) {
+            let aAuctionModel = new auctionModel();
+            aAuctionModel.calculateBidAmountUsingGSP(connection, returnedPet, function (err, bidAmounts) {
+                callback(err, bidAmounts);
+            });
+        }
+    ], function (err, bidAmounts) {
+        finalCallback(err, bidAmounts);
+    });
+}

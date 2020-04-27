@@ -38,11 +38,19 @@ module.exports.controllerAddAuction = function (req, res, next) {
     });
 };
 
-
 module.exports.controllerListBids = function (req, res, next) {
     controllerSteps(req, res, next, function (connection, callback) {
         var ownerID = req.params.ownerID;
         AuctionRepo.listBidsOfOwnerRepo(connection, ownerID, function (err, returnedObject) {
+            callback(err, returnedObject);
+        });
+    });
+};
+
+module.exports.calculateBidAmountUsingGSP = function (req, res, next) {
+    controllerSteps(req, res, next, function (connection, callback) {
+        var petID = req.params.petID;
+        AuctionRepo.calculateBidAmountUsingGSP(connection, petID, function (err, returnedObject) {
             callback(err, returnedObject);
         });
     });
