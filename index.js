@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var async = require('async');
 
-app.get('/', (req, res) => res.send('helloooo'));
+app.get('/', (req, res) => res.send('WELCOME TO PET STORE'));
 
 
 var server = app.listen(3050, function () {

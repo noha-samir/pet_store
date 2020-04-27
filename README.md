@@ -10,7 +10,7 @@
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
  - clone project
- - install node_modules "npm install"
+ - install node_modules "npm install","npm i node"
  - install nodemon "npm i nodemon"
  - start server "npm start"
 
@@ -32,19 +32,16 @@ Development env must contains
 ## 🔧 Running the tests <a name = "tests"></a>
 
 Test if server working
-  - Run  curl localhost:3000
+  - Run  curl localhost:3050
   - Response should be >> {helloooo}
 
 Run APIs using postman or any other tool 
-  - API >> http://localhost:3000/api/v1/user
+  - API >> http://localhost:3050/api/v1/user
   - METHOD >> POST
   - BODY >> {
 	 "name":"noha"
 }
   - RESPONSE >> created user
-
-Test cases in TESTCASES file
-  - This file will be have the body of the request and supposed response
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
