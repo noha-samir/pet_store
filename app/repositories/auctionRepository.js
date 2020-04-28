@@ -3,6 +3,7 @@ var userModel = require('../models/userModel'); //for DB connections
 var petModel = require('../models/petModel'); //for DB connections 
 var auctionModel = require('../models/auctionModel'); //for DB connections 
 
+//add bid
 module.exports.addAuctionRepo = function (connection, auction, finalCallback) {
     async.waterfall([
         //validation on bidder
@@ -33,16 +34,17 @@ module.exports.addAuctionRepo = function (connection, auction, finalCallback) {
     });
 }
 
+//list all owner's bids
 module.exports.listBidsOfOwnerRepo = function (connection, ownerID, finalCallback) {
     async.waterfall([
-        //validation on bidder
+        //validation on owner
         function (callback) {
             let aUserModel = new userModel();
             aUserModel.getUserByID(connection, ownerID, function (err, aUser) {
                 callback(err, aUser);
             });
         },
-        //list on bidders
+        //list all bidders
         function (owner, callback) {
             let aAuctionModel = new auctionModel();
             aAuctionModel.listBidsOfOwner(connection, owner, function (err, listOfBidders) {
@@ -54,6 +56,7 @@ module.exports.listBidsOfOwnerRepo = function (connection, ownerID, finalCallbac
     });
 }
 
+//calculate bids amount using gsp
 module.exports.calculateBidAmountUsingGSP = function (connection, petID, finalCallback) {
     async.waterfall([
         function (callback) {

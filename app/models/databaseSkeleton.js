@@ -3,7 +3,7 @@ var async = require('async');
 function databaseSkeleton() {
 }
 
-// create tables with relations
+// create tables with relations and defualt values
 databaseSkeleton.prototype.createTablesWithRelations = function (gConnection, finalCallback) {
     async.waterfall([
         function (callback) {

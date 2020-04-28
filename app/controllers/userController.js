@@ -29,6 +29,7 @@ function controllerSteps(req, res, next, UserAction) {
         });
 };
 
+//add new user
 module.exports.controllerAddUser = function (req, res, next) {
     controllerSteps(req, res, next, function (connection, callback) {
         var user = req.body.user;

@@ -29,6 +29,7 @@ function controllerSteps(req, res, next, UserAction) {
         });
 };
 
+// add new pet
 module.exports.controllerAddPet = function (req, res, next) {
     controllerSteps(req, res, next, function (connection, callback) {
         var pet = req.body.pet;

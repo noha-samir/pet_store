@@ -1,8 +1,8 @@
 const Joi = require('joi');
 var async = require('async');
 
-//JOI validation to the input object
-const inserPetSchema = Joi.object().keys({
+//JOI validation insert Pet Schema
+const insertPetSchema = Joi.object().keys({
     pet: Joi.object().keys({
         type: Joi.string().error(new Error("Pet type must be string!!!")),
         name: Joi.string().error(new Error("Pet name must be string!!!")),
@@ -15,7 +15,7 @@ const inserPetSchema = Joi.object().keys({
 module.exports.inserPetValidation = function (req, res, next) {
     async.waterfall([
         function (callback) {
-            Joi.validate(req.body, inserPetSchema, { stripUnknown: false }, { abortEarly: true }, function (err) {
+            Joi.validate(req.body, insertPetSchema, { stripUnknown: false }, { abortEarly: true }, function (err) {
                 if (!err) {
                     callback(null);
                 }

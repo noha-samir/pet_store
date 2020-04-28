@@ -1,7 +1,7 @@
 const Joi = require('joi');
 var async = require('async');
 
-//JOI validation to the input object
+//JOI validation insert Auction Schema
 const insertAuctionSchema = Joi.object().keys({
     auction: Joi.object().keys({
         bidder: Joi.object().keys({
@@ -40,7 +40,7 @@ module.exports.insertAuctionValidation = function (req, res, next) {
 //*******************************************************************//
 
 
-//JOI validation to the input object
+//JOI validation list Bids Schema
 const listBidsSchema = Joi.object().keys({
     ownerID: Joi.number().positive().error(new Error("ownerID must be a positive number!!!"))
 });
@@ -70,7 +70,7 @@ module.exports.listBidsValidation = function (req, res, next) {
 //*******************************************************************//
 
 
-//JOI validation to the input object
+//JOI validation calculate Bid Amount Using GSP Schema
 const calculateBidAmountUsingGSPSchema = Joi.object().keys({
     petID: Joi.number().positive().error(new Error("pet ID must be a positive number!!!"))
 });

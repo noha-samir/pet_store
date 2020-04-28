@@ -29,6 +29,7 @@ function controllerSteps(req, res, next, AuctionAction) {
         });
 };
 
+//make a bid
 module.exports.controllerAddAuction = function (req, res, next) {
     controllerSteps(req, res, next, function (connection, callback) {
         var auction = req.body.auction;
@@ -38,6 +39,7 @@ module.exports.controllerAddAuction = function (req, res, next) {
     });
 };
 
+//list Bids Of Owner
 module.exports.controllerListBids = function (req, res, next) {
     controllerSteps(req, res, next, function (connection, callback) {
         var ownerID = req.params.ownerID;
@@ -47,6 +49,7 @@ module.exports.controllerListBids = function (req, res, next) {
     });
 };
 
+//calculate Bid Amount Using GSP
 module.exports.calculateBidAmountUsingGSP = function (req, res, next) {
     controllerSteps(req, res, next, function (connection, callback) {
         var petID = req.params.petID;

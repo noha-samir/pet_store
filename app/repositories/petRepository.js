@@ -2,6 +2,7 @@ var async = require('async');
 var petModel = require('../models/petModel'); //for DB connections 
 var userModel = require('../models/userModel'); //for DB connections 
 
+//add new pet
 module.exports.addPetRepo = function (connection, pet, finalCallback) {
     async.waterfall([
         function (callback) {

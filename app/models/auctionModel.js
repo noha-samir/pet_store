@@ -66,7 +66,7 @@ Auction.prototype.getAuctionByID = function (gConnection, auctionID, finalCallba
         });
 };
 
-//get auction by id
+//list Bids Of Owner
 Auction.prototype.listBidsOfOwner = function (gConnection, owner, finalCallback) {
     let listBidsOfOwner = [];
     async.waterfall([

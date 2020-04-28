@@ -1,7 +1,7 @@
 const Joi = require('joi');
 var async = require('async');
 
-//JOI validation to the input object
+//JOI validation insert User Schema
 const insertUserSchema = Joi.object().keys({
     user: Joi.object().keys({
         name: Joi.string().error(new Error("User name must be string!!!")),

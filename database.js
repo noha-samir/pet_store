@@ -1,7 +1,6 @@
 const mysql = require('mysql');
 var async = require('async');
 var constants = require('./constants');
-const fs = require('fs');
 
 //queueLimit:10, limit pending connection queue
 const pool = mysql.createPool({
