@@ -8,7 +8,7 @@
 - [Getting Started](#getting_started)
 - [Built Using](#built_using)
 
-##Notes
+## Notes
 
 - There are defualt values for the local database in constants file in the project
   you have to change them and only them to match your credentials 
