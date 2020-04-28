@@ -14,8 +14,7 @@
  - install node_modules "npm install","npm i node"
  - install nodemon "npm i nodemon"
  - start server "npm start"
- - Response should be >> {App is listening on port:3050
-                         Tables and relations are created successfully with default values:), 
+ - Response should be >> {App is listening on port:3050}                                                                                   {Tables and relations are created successfully with default values:), 
                          Database is ready}
 
 ### Dependencies
