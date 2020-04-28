@@ -1,8 +1,4 @@
 var async = require('async');
-var Helper = require('../../helper');
-var constants = require("../../constants");
-var User = require("./userModel");
-var fs = require('fs');
 
 function databaseSkeleton() {
 }

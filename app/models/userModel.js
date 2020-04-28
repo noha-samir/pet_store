@@ -1,7 +1,4 @@
-//var mysql = require('mysql');
 var async = require('async');
-var Helper = require('../../helper');
-var constants = require("../../constants");
 
 function User() {
     this.id = null;

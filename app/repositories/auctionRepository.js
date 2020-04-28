@@ -1,6 +1,4 @@
 var async = require('async');
-var Helper = require('../../helper');
-var constants = require("../../constants");
 var userModel = require('../models/userModel'); //for DB connections 
 var petModel = require('../models/petModel'); //for DB connections 
 var auctionModel = require('../models/auctionModel'); //for DB connections 
