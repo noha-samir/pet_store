@@ -8,11 +8,15 @@
 - [Built Using](#built_using)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
-
+ - useing mysql database , you have to create a database with name pet_store
+  >> run sql query >> CREATE SCHEMA IF NOT EXISTS `pet_store` DEFAULT CHARACTER SET utf8;
  - clone project
  - install node_modules "npm install","npm i node"
  - install nodemon "npm i nodemon"
  - start server "npm start"
+ - Response should be >> {App is listening on port:3050
+                         Tables and relations are created successfully with default values:), 
+                         Database is ready}
 
 ### Dependencies
 
@@ -32,16 +36,12 @@ Development env must contains
 ## 🔧 Running the tests <a name = "tests"></a>
 
 Test if server working
-  - Run  curl localhost:3050
-  - Response should be >> {helloooo}
+  - Run curl localhost:3050
+  - Response should be >> {WELCOME TO PET STORE}
 
-Run APIs using postman or any other tool 
-  - API >> http://localhost:3050/api/v1/user
-  - METHOD >> POST
-  - BODY >> {
-	 "name":"noha"
-}
-  - RESPONSE >> created user
+Run endpoints using postman or any other tool 
+  - APIs will be attached in the project as a collection 
+    named >> "cognitev APIs.postman_collection.json
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 

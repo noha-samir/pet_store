@@ -18,7 +18,7 @@ Auction.prototype.addAuction = function (gConnection, auction, finalCallback) {
     async.waterfall([
 
         function (callback) {
-            var preparedSqlQuery = "INSERT INTO auction (amount,bidder_id,pet_id) VALUES (?,?,?)";
+            var preparedSqlQuery = "INSERT INTO auction (amount,bidder_id,pet_id) VALUES (?,?,?) ON DUPLICATE KEY UPDATE amount=amount";
             var values = [auction.amount, auction.bidder.id, auction.pet.id];
             gConnection.query(preparedSqlQuery, values, function (err, results, fields) {
 

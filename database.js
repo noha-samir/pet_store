@@ -7,6 +7,7 @@ const fs = require('fs');
 const pool = mysql.createPool({
     connectionLimit: "100",
     queueLimit: 10,
+    multipleStatements: true,
     host: constants.DATABASE_HOST,
     port: constants.DATABASE_PORT,
     user: constants.DATABASE_USER_NAME,

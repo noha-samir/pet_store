@@ -2,22 +2,44 @@ var app = require('express')();
 var compression = require("compression");
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var async = require('async');
+var conn = require('./database');
+var databaseSkeleton = require('./app/models/databaseSkeleton');
+var constants = require('./constants');
 
-app.get('/', (req, res) => res.send('WELCOME TO PET STORE'));
+var server = app.listen(constants.APP_PORT, function (req, res, next) {
 
-
-var server = app.listen(3050, function () {
-    console.log('App is listening!');
+    conn.connectionWithTransaction(function (err, connection) {
+        if (err) throw err;
+        else {
+            var aDatabaseSkeleton = new databaseSkeleton();
+            aDatabaseSkeleton.createTablesWithRelations(connection, function (err) {
+                if (err) throw err;
+                else {
+                    conn.releaseConnectionWithTransaction(err, connection, function (err) {
+                        if (err) throw err;
+                        else {
+                            console.log('Tables and relations are created successfully with default values:), Database is ready');
+                        }
+                    });
+                }
+            });
+        }
+    });
+    console.log('App is listening on port:' + constants.APP_PORT);
 });
+
 
 app.use(morgan('dev'));
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => res.send('WELCOME TO PET STORE'));
+
+
 //handling /api route
 app.use('/api', require('./indexRoutes'));
+
 
 app.use((req, res, next) => {
     const error = new Error('Not found');
