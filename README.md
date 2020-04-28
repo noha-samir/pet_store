@@ -7,15 +7,66 @@
 - [Getting Started](#getting_started)
 - [Built Using](#built_using)
 
-## 🏁 Getting Started <a name = "getting_started"></a>
- - useing mysql database , you have to create a database with name pet_store
-  >> run sql query >> CREATE SCHEMA IF NOT EXISTS `pet_store` DEFAULT CHARACTER SET utf8;
- - clone project
- - install node_modules "npm install","npm i node"
- - install nodemon "npm i nodemon"
- - start server "npm start"
- - Response should be >> {App is listening on port:3050}                                                                                   {Tables and relations are created successfully with default values:), 
-                         Database is ready}
+## Getting Started
+
+first deployment option
+
+1-node and npm must be installed on your machine
+
+second deployment option
+
+2-docker must be installed on your machine (linux os is prefered)
+
+## Deployment
+
+first deployment option
+
+1- use the visual studio code 
+
+2- use mysql database on your machine
+
+3- clone project
+
+4- Open a terminal window and type:
+
+  cd /path-of-the-project
+
+5- install dependencies
+
+   - install node_modules "npm install","npm i node"
+   - install nodemon "npm i nodemon"
+   - start server "npm start"
+      >> Response should be >>  
+                       1- {App is listening on port:3050}
+                       2- {Schema is created successfully}
+                       3- {Tables and relations are created successfully with default values}
+                       4- {Database is ready :)} 
+
+
+second deployment option
+
+1- clone project
+
+2- Open a terminal window and type
+
+  sudo apt-get update
+
+3- Uninstall Old Versions of Docker
+
+  sudo apt-get remove docker docker-engine docker.io
+
+4- Install Docker
+
+  sudo apt install docker.io
+
+5- Start and Automate Docker
+
+  sudo systemctl start docker
+  sudo systemctl enable docker
+
+6- docker --version
+
+7- npm run deploydev 
 
 ### Dependencies
 

@@ -1,0 +1,33 @@
+version: '3.7'
+services: 
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'contacts_list'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '2001:3306'
+    expose:
+      - '2001'
+    volumes:
+      - my-db:/var/lib/mysql
+  contact-list-backend: 
+    build: 
+     context: ../../
+    network_mode: "host"
+    environment:
+      - NODE_ENV=dev
+      - EXPOSE_PORT=2000
+    volumes:
+      - type: bind
+        source: ../../
+        target: /usr/src/app
+    ports: 
+      - "2000:2000"
+    depends_on:
+      - mysql
+volumes:
+  my-db:
