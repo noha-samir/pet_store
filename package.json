@@ -9,6 +9,7 @@
     "babel-node": "0.0.1-security",
     "compression": "^1.7.4",
     "express": "^4.17.1",
+    "jest": "^25.5.0",
     "joi": "^14.3.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
@@ -22,7 +23,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploydev": "(cd ./configurations/dev && docker-compose --project-name contacts up -d --build --force-recreate)",
+    "deploydev": "(cd ./configurations/dev && docker-compose --project-name pets up -d --build --force-recreate)",
     "start": "nodemon --exec babel-node index.js"
   },
   "author": "",

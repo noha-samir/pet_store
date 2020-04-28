@@ -4,7 +4,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: 'contacts_list'
+      MYSQL_DATABASE: 'pet_store'
       MYSQL_USER: 'root'
       MYSQL_PASSWORD: 'root'
       MYSQL_ROOT_PASSWORD: 'root'
@@ -14,7 +14,7 @@ services:
       - '2001'
     volumes:
       - my-db:/var/lib/mysql
-  contact-list-backend: 
+  pet-store-backend: 
     build: 
      context: ../../
     network_mode: "host"

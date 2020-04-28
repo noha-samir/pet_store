@@ -4,8 +4,16 @@
 ## 📝 Table of Contents
 
 <!-- - [About](#about) -->
+- [Notes](#Notes)
 - [Getting Started](#getting_started)
 - [Built Using](#built_using)
+
+##Notes
+
+- There are defualt values for the local database in constants file in the project
+  you have to change them and only them to match your credentials 
+                            >>  DATABASE_USER_NAME: "root"
+                            >>  DATABASE_PASSWORD: ""
 
 ## Getting Started
 
