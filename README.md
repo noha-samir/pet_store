@@ -17,7 +17,7 @@ second deployment option
 
 2-docker must be installed on your machine (linux os is prefered)
 
-## Deployment
+## Deployment & Installing Env
 
 first deployment option
 
@@ -78,10 +78,6 @@ second deployment option
 - [express](https://expressjs.com/)
 - [request](https://www.npmjs.com/package/request)
 - [babel-cli](https://www.npmjs.com/package/babel-cli)
-
-### Installing Env
-Development env must contains 
-- [NodeJs](https://nodejs.org/en/) - Server Environment
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
