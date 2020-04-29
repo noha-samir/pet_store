@@ -12,7 +12,7 @@
 
 first deployment option
 
-- There are defualt values for the local database in the constants.js file in the project
+- There are defualt values for the local database in the .vscode folder in the project
   you have to change the database credentials and only these credentials to match yours:
                             >>  DATABASE_USER_NAME: "root"
                             >>  DATABASE_PASSWORD: ""
