@@ -4,7 +4,6 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var conn = require('./database');
 var databaseSkeleton = require('./app/models/databaseSkeleton');
-var constants = require('./constants');
 var async = require('async');
 
 var server = app.listen(3050, function (req, res, next) {
@@ -12,7 +11,9 @@ var server = app.listen(3050, function (req, res, next) {
     async.waterfall([
         function (callback) {
             conn.connection.query("CREATE schema IF NOT EXISTS `pet_store` DEFAULT CHARACTER SET utf8;", function (err) {
-                if (err) callback(err);
+                if (err) {
+                    callback(err);
+                }
                 else {
                     console.log('Schema is created successfully');
                     callback(null);
@@ -25,7 +26,9 @@ var server = app.listen(3050, function (req, res, next) {
         function (connection, callback) {
             var aDatabaseSkeleton = new databaseSkeleton();
             aDatabaseSkeleton.createTablesWithRelations(connection, function (err) {
-                if (err) callback(err);
+                if (err) {
+                    callback(err);
+                }
                 else {
                     console.log('Tables and relations are created successfully with default values');
                     callback(null, connection);
@@ -33,15 +36,20 @@ var server = app.listen(3050, function (req, res, next) {
             });
         }
     ], function (err, connection) {
-        conn.releaseConnectionWithTransaction(err, connection, function () {
-            if (err) throw err;
-            else {
-                console.log('Database is ready :)');
-            }
-        });
+        if (err) {
+            throw err;
+        } else {
+            conn.releaseConnectionWithTransaction(err, connection, function () {
+                if (err) {
+                    throw err;
+                }
+                else {
+                    console.log('Database is ready :)');
+                }
+            });
+        }
     });
 });
-
 
 app.use(morgan('dev'));
 app.use(compression());

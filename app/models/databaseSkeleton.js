@@ -11,7 +11,7 @@ databaseSkeleton.prototype.createTablesWithRelations = function (gConnection, fi
               id INT NOT NULL AUTO_INCREMENT,
               name VARCHAR(45) NOT NULL,
               PRIMARY KEY (id),
-              UNIQUE INDEX id_UNIQUE (id ASC) VISIBLE)
+              UNIQUE INDEX id_UNIQUE (id ASC))
             ENGINE = InnoDB;
                 
             CREATE TABLE IF NOT EXISTS pet_store.pet (
@@ -20,8 +20,8 @@ databaseSkeleton.prototype.createTablesWithRelations = function (gConnection, fi
               name VARCHAR(45) NOT NULL,
               owner_id INT NOT NULL,
               PRIMARY KEY (id),
-              UNIQUE INDEX id_UNIQUE (id ASC) VISIBLE,
-              INDEX fk_pet_user_idx (owner_id ASC) VISIBLE,
+              UNIQUE INDEX id_UNIQUE (id ASC) ,
+              INDEX fk_pet_user_idx (owner_id ASC) ,
               CONSTRAINT fk_pet_user
                 FOREIGN KEY (owner_id)
                 REFERENCES pet_store.user (id)
@@ -35,10 +35,10 @@ databaseSkeleton.prototype.createTablesWithRelations = function (gConnection, fi
               bidder_id INT NOT NULL,
               pet_id INT NOT NULL,
               PRIMARY KEY (id),
-              UNIQUE INDEX id_UNIQUE (id ASC) VISIBLE,
-              INDEX fk_auction_user1_idx (bidder_id ASC) VISIBLE,
-              INDEX fk_auction_pet1_idx (pet_id ASC) VISIBLE,
-              INDEX unq_row (amount ASC, bidder_id ASC, pet_id ASC) VISIBLE,
+              UNIQUE INDEX id_UNIQUE (id ASC) ,
+              INDEX fk_auction_user1_idx (bidder_id ASC) ,
+              INDEX fk_auction_pet1_idx (pet_id ASC) ,
+              INDEX unq_row (amount ASC, bidder_id ASC, pet_id ASC) ,
               CONSTRAINT fk_auction_user1
                 FOREIGN KEY (bidder_id)
                 REFERENCES pet_store.user (id)
