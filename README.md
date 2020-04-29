@@ -113,6 +113,7 @@ Test if server working
 Run endpoints using postman or any other tool 
   - APIs will be attached in the project as a collection 
     named >> "cognitev APIs.postman_collection.json
+    each API has its test cases to pass.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
