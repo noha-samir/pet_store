@@ -45,7 +45,7 @@ first deployment option
 
    - install node_modules "npm install","npm i node"
    - install nodemon "npm i nodemon"
-   - start server "npm start"
+   - using debugging mood "F5"
       >> Response should be >>  
                        1- {App is listening on port:3050}
                        2- {Schema is created successfully}
