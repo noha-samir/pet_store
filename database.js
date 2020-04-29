@@ -16,9 +16,11 @@ const pool = mysql.createPool({
 
 const connection = mysql.createConnection({
     host: constants.DATABASE_HOST,
+    port: constants.DATABASE_PORT,
     user: constants.DATABASE_USER_NAME,
     password: constants.DATABASE_PASSWORD
 });
+
 module.exports.connection = connection;
 
 module.exports.connectionWithTransaction = function (finalCallback) {
