@@ -10,6 +10,6 @@ RUN npm install
 
 RUN npm install pm2 -g
 
-EXPOSE 2000
+EXPOSE 3050
 
 ENTRYPOINT pm2-runtime start /app/app.config.js --env "${NODE_ENV}"

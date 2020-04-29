@@ -20,13 +20,13 @@ services:
     network_mode: "host"
     environment:
       - NODE_ENV=dev
-      - EXPOSE_PORT=2000
+      - EXPOSE_PORT=3050
     volumes:
       - type: bind
         source: ../../
         target: /usr/src/app
     ports: 
-      - "2000:2000"
+      - "3050:3050"
     depends_on:
       - mysql
 volumes:

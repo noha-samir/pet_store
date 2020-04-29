@@ -14,6 +14,13 @@ const pool = mysql.createPool({
     database: constants.DATABASE_NAME
 });
 
+const connection = mysql.createConnection({
+    host: constants.DATABASE_HOST,
+    user: constants.DATABASE_USER_NAME,
+    password: constants.DATABASE_PASSWORD
+});
+module.exports.connection = connection;
+
 module.exports.connectionWithTransaction = function (finalCallback) {
     let aConnection = null;
 
@@ -24,20 +31,8 @@ module.exports.connectionWithTransaction = function (finalCallback) {
                     callback(err);
                 } else {
                     aConnection = connection;
-                    //let logString = global.req.method + " " + global.req.baseUrl + global.req.url + "  " + aConnection.threadId + "\n\n";
-                    //fs.appendFile('RequestThreads.txt', logString, function () { });
                     callback(null);
                 }
-            });
-        },
-        function (callback) {
-            aConnection.query(" set @@SESSION.time_zone='+02:00' ", function (err) {
-                callback(err);
-            });
-        },
-        function (callback) {
-            aConnection.query(" set @@SESSION.sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' ", function (err) {
-                callback(err);
             });
         },
         function (callback) {
@@ -91,20 +86,8 @@ module.exports.connectionWithoutTransaction = function (finalCallback) {
                     callback(err);
                 } else {
                     aConnection = connection;
-                    //let logString = global.req.method + " " + global.req.baseUrl + global.req.url + "  " + aConnection.threadId + "\n\n";
-                    //fs.appendFile('RequestThreads.txt', logString, function () { });
                     callback(null);
                 }
-            });
-        },
-        function (callback) {
-            aConnection.query(" set @@SESSION.time_zone='+02:00' ", function (err) {
-                callback(err);
-            });
-        },
-        function (callback) {
-            aConnection.query(" set @@SESSION.sql_mode = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' ", function (err) {
-                callback(err);
             });
         }
     ], function (err) {
