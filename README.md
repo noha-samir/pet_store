@@ -12,8 +12,17 @@
 
 first deployment option
 
-- There are defualt values for the local database in the .vscode folder in the project
-  you have to change the database credentials and only these credentials to match yours:
+- There are defualt values for the local database credentials that you have to change to match yours:
+
+    - using npm start:
+        changes will be done in localDatabaseCredentials.js file 
+                  >> Replace defualt value 
+                            >>  DATABASE_USER_NAME: "root"
+                            >>  DATABASE_PASSWORD: ""
+
+    - using debugging mood:
+            In the .vscode folder in the project
+                  >> Replace defualt value 
                             >>  DATABASE_USER_NAME: "root"
                             >>  DATABASE_PASSWORD: ""
 
@@ -45,6 +54,13 @@ first deployment option
 
    - install node_modules "npm install","npm i node"
    - install nodemon "npm i nodemon"
+   - using npm start >> "npm start"
+      >> Response in TERMINAL should be >>  
+                       1- {App is listening on port:3050}
+                       2- {Schema is created successfully}
+                       3- {Tables and relations are created successfully with default values}
+                       4- {Database is ready :)} 
+
    - using debugging mood >> "F5"
       >> Response in DEBUG CONSOLE should be >>  
                        1- {App is listening on port:3050}
