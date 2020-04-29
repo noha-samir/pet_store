@@ -147,9 +147,8 @@ Auction.prototype.calculateBidAmountUsingGSP = function (gConnection, pet, final
                         callback(ERR);
                     }
                     else {
-                        let ERR = new Error();
-                        ERR.message = "No Winners!!!";
-                        callback(ERR);
+                        listOfBids.push("No Winners!!!");
+                        callback(null);
                     }
                 }
                 else {

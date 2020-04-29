@@ -10,6 +10,7 @@ var constants = require('./constants');
 var server = app.listen(3050, function (req, res, next) {
 
     console.log('App is listening on port: 3050');
+
     async.waterfall([
         function (callback) {
             conn.connection.query("CREATE schema IF NOT EXISTS `pet_store` DEFAULT CHARACTER SET utf8;", function (err) {

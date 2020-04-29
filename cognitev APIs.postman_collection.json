@@ -7,6 +7,24 @@
 	"item": [
 		{
 			"name": "create user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "875426b1-034f-4dbd-85e0-7dd3c6ee81f4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is a user object\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).be.an('object')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -39,6 +57,24 @@
 		},
 		{
 			"name": "create pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c2e1cc-094b-4ed0-9fe8-4e6fa456d90c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is a pet object\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).be.an('object')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -71,6 +107,24 @@
 		},
 		{
 			"name": "create bid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "017f9ef5-5d5c-4d61-aef0-86932e4f7a68",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is auction object\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).be.an('object')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -83,7 +137,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"auction\":{\n\t\t\"amount\":500,\n\t\t\"pet\":{\n\t\t\t\"id\":1\n\t\t},\n\t\t\"bidder\":{\n\t\t\t\"id\":5\n\t\t}\n\t}\n}"
+					"raw": "{\n\t\"auction\":{\n\t\t\"amount\":500,\n\t\t\"pet\":{\n\t\t\t\"id\":3\n\t\t},\n\t\t\"bidder\":{\n\t\t\t\"id\":5\n\t\t}\n\t}\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3050/api/v1/auction",
@@ -103,6 +157,25 @@
 		},
 		{
 			"name": "list bids of owner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba25072f-952e-499b-8141-de8f5a61125d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is array of bids\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).be.an('array')",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -130,6 +203,32 @@
 		},
 		{
 			"name": "calculate pet bids using GSP ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f58a89c-cc7d-49e1-ae5f-6c07dd5430f8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is array of bids of pet auction\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).be.an('array')",
+							"});",
+							"pm.test(\"Last element is LOST\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[jsonData.length-1].amount).to.be.eql('LOST');",
+							"});",
+							"pm.test(\"Amount of first bid greater than second one\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[1].amount).not.to.be.above(jsonData[0].amount);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -138,7 +237,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:3050/api/v1/auction/calculate/bids/using/GSP/pet/2",
+					"raw": "http://localhost:3050/api/v1/auction/calculate/bids/using/GSP/pet/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -153,7 +252,7 @@
 						"using",
 						"GSP",
 						"pet",
-						"2"
+						"1"
 					]
 				}
 			},
