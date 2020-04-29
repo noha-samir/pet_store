@@ -45,8 +45,8 @@ first deployment option
 
    - install node_modules "npm install","npm i node"
    - install nodemon "npm i nodemon"
-   - using debugging mood "F5"
-      >> Response should be >>  
+   - using debugging mood >> "F5"
+      >> Response in DEBUG CONSOLE should be >>  
                        1- {App is listening on port:3050}
                        2- {Schema is created successfully}
                        3- {Tables and relations are created successfully with default values}
