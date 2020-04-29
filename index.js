@@ -5,8 +5,10 @@ var morgan = require('morgan');
 var conn = require('./database');
 var databaseSkeleton = require('./app/models/databaseSkeleton');
 var async = require('async');
+var constants = require('./constants');
 
 var server = app.listen(3050, function (req, res, next) {
+
     console.log('App is listening on port: 3050');
     async.waterfall([
         function (callback) {

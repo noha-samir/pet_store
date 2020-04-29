@@ -52,7 +52,6 @@ first deployment option
                        3- {Tables and relations are created successfully with default values}
                        4- {Database is ready :)} 
 
-
 second deployment option
 
 1- clone project

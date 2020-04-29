@@ -19,12 +19,11 @@
     "sequelize": "^5.21.7"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "dotenv": "^8.2.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "deploydev": "(cd ./configurations/dev && docker-compose --project-name pets up -d --build --force-recreate)",
-    "start": "nodemon --exec babel-node index.js"
   },
   "author": "",
   "license": "ISC"
